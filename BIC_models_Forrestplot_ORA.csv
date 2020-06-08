@@ -1,0 +1,4 @@
+﻿Comparison,Summed difference,Lowerbound,Upperbound,Metric
+Uncertainty -  Sample Cost,-1685,-3086,-527,BIC
+Uncertainty - Threshold,-1741,-3072,-636,BIC
+Sample Cost - Threshold,-56,-627,504,BIC
