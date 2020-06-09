@@ -1,5 +1,5 @@
-# "The Cognitive Mechanisms That Drive Social Belief Updates During Adolescence" 
-Ma,I., Westhoff, B., & van Duijvenvoorde, A.C.K.
+# The Cognitive Mechanisms That Drive Social Belief Updates During Adolescence
+by Ma, I., Westhoff, B., & van Duijvenvoorde, A.C.K.
 
 This repository contains data and code for Ma, Westhoff, & van Duijvenvoorde (BioRxiv). The jupyter notebook contains the code for the plots and analyses. The Matlab code contains the computational modelling code, including the fitting procedure. The matlab code for figure 3C depicting the the winning model fits are found in the model comparisons folder.
 
