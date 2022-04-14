@@ -12,7 +12,7 @@ subjvec = unique(data.subjid);
 numinit = 100; % Number of starting points for parameter fitting
 
 
-for subjidx = 1:20;%length(subjvec)
+for subjidx = 1:length(subjvec)
     subjidx
     idx = find(data.subjid == subjvec(subjidx));
     datasubj.red    = data.red(idx);
@@ -32,7 +32,7 @@ for subjidx = 1:20;%length(subjvec)
     for runidx = 1:numinit
         [pars_per_run(subjidx, runidx, :), NLL(runidx)] = fmincon(myNLL, init(runidx,:),[],[],[],[], lowLimits, highLimits, [], optimset('Display', 'off'));
     end
-    NLL
+%     NLL
     [~, bestrun] = min(NLL);
     [fittedpars, bestNLL] = fmincon(myNLL, init(bestrun,:),[],[],[],[], lowLimits, highLimits, [], optimset('Display', 'off'));
     
@@ -55,5 +55,5 @@ end
 % pars_est = [subjvec, pars_est]
 allbestNLL =  allbestNLL'
 
-save estimates_generatedDDM_recoveredDDM pars_est allbestNLL
-
+save estimates_generatedDDM_recoveredDDM_all pars_est allbestNLL
+writematrix(pars_est, "estimates_generatedDDM_recoveredDDM_all.csv")

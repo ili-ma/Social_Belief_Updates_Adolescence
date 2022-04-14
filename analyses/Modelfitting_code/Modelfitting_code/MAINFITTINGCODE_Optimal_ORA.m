@@ -1,10 +1,10 @@
 % FITTING for ORA study
 clear all; close all
 % %data
- load('summaryORA3.mat')
+%  load('generated_Ksamples_modelRecovery_ORA.mat')
 
 %generated data
-%load('generated_Optimal_modelRecovery_ORA.mat')
+load('generated_Optimal_modelRecovery_ORA.mat')
 %load('generated_uncertainty_modelRecovery_ORA.mat')
 %load('generated_DDM_modelRecovery_ORA.mat')
 
@@ -41,7 +41,7 @@ for subjidx = 1:length(subjvec) % for generated data run 20 subjects
     for runidx = 1:numinit
         [pars_per_run(subjidx, runidx, :), NLL(runidx)] = fmincon(myNLL, init(runidx,:),[],[],[],[], lowLimits, highLimits, [], optimset('Display', 'off'));
     end
-    NLL
+    NLL;
     [~, bestrun] = min(NLL);
     [fittedpars, bestNLL] = fmincon(myNLL, init(bestrun,:),[],[],[],[], lowLimits, highLimits, [], optimset('Display', 'off'));
     pars_est(subjidx,:) = fittedpars;
@@ -59,10 +59,9 @@ for subjidx = 1:length(subjvec)
     myNLL = @(pars) mymodel_Optimal_ORA(pars, datasubj);
 end
 
-% allbestNLL = [subjvec, allbestNLL']
-% pars_est = [subjvec, pars_est]
+allbestNLL = [subjvec, allbestNLL']
+pars_est = [subjvec, pars_est]
 
-allbestNLL =  allbestNLL';
-
-
-
+save "../Recoveries/estimate_generatedOptimal_recoveredOptimal_all" pars_est allbestNLL
+%save estimates_allfitsoptimalPosBias_freePriors pars_per_run
+writematrix(pars_est, "../Recoveries/estimate_generatedOptimal_recoveredOptimal_all.csv")
