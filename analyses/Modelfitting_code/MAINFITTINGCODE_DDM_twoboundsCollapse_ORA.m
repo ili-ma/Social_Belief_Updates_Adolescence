@@ -1,7 +1,7 @@
 % FITTING
 clear; close all
 
-load('summaryORA3.mat')
+load('generated_Ksamples_modelRecovery_ORA.mat')
 subjvec = unique(data.subjid);
 numinit = 100; 
 
@@ -14,14 +14,16 @@ for subjidx = 1:length(subjvec)
     
     myNLL = @(pars) mymodelDDM_twobounds_collapse_ORA(pars, datasubj);
     
-    init       = NaN(numinit, 4); % parameters
+    init       = NaN(numinit, 3); % parameters
     init(:,1)  = rand(numinit,1); %beta softmax
     init(:,2)  = randi(13, numinit,1);
     init(:,3)  = randi(13, numinit,1);
-    init(:,4)  = -rand(numinit,1) * 0.001;
+    %init(:,4)  = -rand(numinit,1) * 0.001;
     
-    lowLimits = [0 0 0 -1];
-    highLimits = [100 inf inf 0];
+    %lowLimits = [0 0 0 -1];
+    %highLimits = [100 inf inf 0];
+    lowLimits = [0 0 0];
+    highLimits = [100 inf inf];
     
     for runidx = 1:numinit
         [pars_per_run(subjidx, runidx, :), NLL(runidx)] = fmincon(myNLL, init(runidx,:),[],[],[],[], lowLimits, highLimits, [], optimset('Display', 'off'));
@@ -48,5 +50,5 @@ end
 allbestNLL = [subjvec, allbestNLL']
 pars_est = [subjvec, pars_est]
 
-save estimates_DDMTwoboundsCollapse_ORA3_19March2019 pars_est allbestNLL
+save estimate_Recovery_Ksamples_Threshold_23July2021 pars_est allbestNLL
 %save estimates_allfitsoptimalPosBias_freePriors pars_per_run
