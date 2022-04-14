@@ -10,7 +10,7 @@ for subjidx = 1:length(subjvec)
     subjectNr = subjvec(subjidx);
     [subjidx, subjectNr]
     
-    datasubj = subjectData_ORA(subjectNr, data);
+    datasubj = subjectData(subjectNr, data);
     pars_est_row = pars_est(:,1) == subjectNr;
     pars_est_subj = pars_est(pars_est_row, :);
     
