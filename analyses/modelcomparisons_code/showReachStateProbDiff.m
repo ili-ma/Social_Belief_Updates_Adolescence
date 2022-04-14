@@ -37,26 +37,20 @@ function showReachStateProbDiff()
     probs_count = getProbs(pars_count);
     counts_ddm = makeFreq(probs_count) * n_trials;
     
-    figure('Position', [20, 450, 1400, 300]);
-    addPlot(1, tc .* counts_data,      policy_scale, policycolors, 'Human Data');
-%     addPlot(2, tc .* counts_optimal,   policy_scale, policycolors, 'Optimal');
-%     addPlot(3, tc .* counts_heuristic, policy_scale, policycolors, 'Uncertainty');
-%     addPlot(4, tc .* counts_ddm,       policy_scale, policycolors, 'DDM');
-     
-    subplot(1, 5, 5);
-    caxis(policy_scale);
+    figure('Position', [20, 450, 400, 300]);
+    addPlot(1, 1, tc .* counts_data,      policy_scale, policycolors, 'Human Data');
     colorbar;
-    axis off;
 
     figure('Position', [20, 20, 1400, 300]);
-    addPlot(2, tc .* (counts_data - counts_optimal),   diff_scale, diffcolors, 'Data - Sample Cost');
-    addPlot(3, tc .* (counts_data - counts_heuristic), diff_scale, diffcolors, 'Data - Uncertainty');
-    addPlot(4, tc .* (counts_data - counts_ddm),       diff_scale, diffcolors, 'Data - Threshold');
-    addPlot(5, tc .* (counts_data - counts_urgency),   diff_scale, diffcolors, 'Data - Urgency Signal');
+    addPlot(1, 4, tc .* (counts_data - counts_optimal),   diff_scale, diffcolors, 'Data - Sample Cost');
+    addPlot(2, 4, tc .* (counts_data - counts_heuristic), diff_scale, diffcolors, 'Data - Uncertainty');
+    addPlot(3, 4, tc .* (counts_data - counts_ddm),       diff_scale, diffcolors, 'Data - Threshold');
+    % addPlot(4, 5, tc .* (counts_data - counts_urgency),   diff_scale, diffcolors, 'Data - Urgency Signal');
     
-    subplot(1, 4, 1);
+    subplot(1, 4, 4);
     caxis(diff_scale);
-    colorbar;
+    bar = colorbar;
+    bar.Location = "westoutside";
     axis off;
 end
 
@@ -90,8 +84,8 @@ function total_counts = makeFreq(policy)
     end
 end
 
-function addPlot(nr, data, scale, colors, title_text)
-    subplot(1, 5, nr);
+function addPlot(nr, plots, data, scale, colors, title_text)
+    subplot(1, plots, nr);
     img = imagesc(data, scale);
     if ~exist('OCTAVE_VERSION', 'builtin')
         set(img, 'AlphaData', ~isnan(data));
