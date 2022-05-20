@@ -1,3 +1,5 @@
+%Fitting Uncertainty model invest choices
+
 load('summaryORA3.mat'); 
 %% also load estimates of model of interest
 load estimates_uncertaintyFull3_ORA_20March2019.mat
