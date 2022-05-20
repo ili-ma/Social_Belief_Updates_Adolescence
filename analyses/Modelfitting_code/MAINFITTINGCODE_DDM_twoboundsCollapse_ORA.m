@@ -1,4 +1,4 @@
-% FITTING
+% FITTING Threshold model two collapsing bounds
 clear; close all
 
 load('generated_Ksamples_modelRecovery_ORA.mat')
