@@ -1,4 +1,4 @@
-% FITTING
+% FITTING Count model
 clear all; close all
 
 load('summaryORA3.mat')
