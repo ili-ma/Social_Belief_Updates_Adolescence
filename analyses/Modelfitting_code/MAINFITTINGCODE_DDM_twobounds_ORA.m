@@ -1,4 +1,4 @@
-% FITTING
+% FITTING Threshold model two bounds
 clear all; close all
 %data
 %load('summaryORA3.mat')
