@@ -1,4 +1,4 @@
-#Fit the Sample Cost Model
+# This script fits the Sample Cost Model
 
 load('summaryORA3.mat'); 
 load ('estimates_optimalFull_ORA3_19March2019.mat');
