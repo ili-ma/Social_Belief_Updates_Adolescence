@@ -1,4 +1,4 @@
-% FITTING
+% Fitting Uncertainty model
 clear all; close all
 %%data
 load('summaryORA3.mat')
