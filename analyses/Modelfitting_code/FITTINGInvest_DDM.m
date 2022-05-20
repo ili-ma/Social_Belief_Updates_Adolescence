@@ -1,4 +1,4 @@
-# This script fits the Threshold model
+% This script fits the Threshold model invest data
 
 clear; close all
 load('summaryORA3.mat');
