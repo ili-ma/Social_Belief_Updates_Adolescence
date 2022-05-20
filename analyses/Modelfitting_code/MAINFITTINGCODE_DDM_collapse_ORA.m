@@ -1,4 +1,4 @@
-% FITTING
+% FITTING Threshold model collapsing bounds
 clear all; close all
 
 load('summaryORA3.mat')
