@@ -1,3 +1,5 @@
+# This script fits the Threshold model
+
 clear; close all
 load('summaryORA3.mat');
 load estimates_DDMTwobounds_ORA3_19March2019
