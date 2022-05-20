@@ -1,4 +1,4 @@
-% FITTING Sample cost model 
+% FITTING Threshold model 
 
 clear all; close all
 
