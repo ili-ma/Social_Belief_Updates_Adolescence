@@ -1,4 +1,5 @@
-% FITTING
+% FITTING Sample cost model 
+
 clear all; close all
 
 load('summaryORA3.mat')
