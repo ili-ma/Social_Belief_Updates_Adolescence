@@ -1,4 +1,4 @@
-% FITTING for ORA study
+% FITTING Sample cost model
 clear all; close all
 % %data
 %  load('generated_Ksamples_modelRecovery_ORA.mat')
